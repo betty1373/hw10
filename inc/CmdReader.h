@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <set>
 #include <chrono>
 #include "Observer.h"
 /// @file
@@ -21,11 +22,17 @@ public:
     void Work();
 /// @brief Processes cmds and inform subscribers
     void NewCmd(const std::string& cmd);
+
+    void AddClient(const std::string& client);
+    void DeleteClient(const std::string& client);
 private:
 /// @brief Private Constructor
     CmdReader(size_t num_cmds,std::istream& istream=std::cin);
 /// @brief Forms batch to stringstream
     std::stringstream FormBatch();
+
+    std::map<std::string, std::string> m_contexts;
+    std::set<std::string> m_clients;
 
     size_t m_num_cmds;
     std::istream& m_istream;

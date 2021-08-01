@@ -47,7 +47,15 @@ void CmdReader::NewCmd(const std::string& cmd)
         }
     }
 }
-   
+void CmdReader::AddClient(const std::string& client) {
+    m_clients.emplace(client);
+}
+void CmdReader::DeleteClient(const std::string& client){
+    m_clients.erase(client);
+    if (m_clients.size()==0) {
+        
+    }
+}   
 CmdReader::CmdReader(size_t num_cmds,std::istream& istream) 
     : m_num_cmds{num_cmds},
         m_istream(istream),
