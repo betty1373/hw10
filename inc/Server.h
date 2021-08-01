@@ -22,7 +22,7 @@ private:
   std::shared_ptr<CmdReader> m_cmdReader;
   enum { max_length = 1024 };
   char data_[max_length];
-};
+}
 
 class Server
 {
@@ -37,6 +37,6 @@ private:
   std::shared_ptr<CmdReader> m_cmdReader;
   std::shared_ptr<ConsoleLogger> m_consoleLogger;
   std::shared_ptr<FileLogger> m_fileLogger;
-};
+}
 
 #endif

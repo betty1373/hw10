@@ -1,6 +1,7 @@
 #include "Server.h"
 Session::Session(tcp::socket socket, std::shared_ptr<CmdReader>& reader)
-    : socket_(std::move(socket))
+    : m_socket(std::move(socket)),
+      m_cmdReader(reader)
   {
   }
 
