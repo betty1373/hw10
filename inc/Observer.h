@@ -16,6 +16,6 @@ public:
     virtual ~Observable()= default;
     virtual void Subscribe(const std::shared_ptr<Observer>& obs) = 0;
    // virtual void Unsubscribe(const std::shared_ptr<Observer>& obs) = 0;
-    virtual void Notify() = 0;
+    virtual void Notify(std::vector<std::string>& cmds) = 0;
 };
 #endif

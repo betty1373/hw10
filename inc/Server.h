@@ -8,8 +8,7 @@
 #include "Logger.h"
 
 using boost::asio::ip::tcp;
-class Session
-  : public std::enable_shared_from_this<Session>
+class Session  : public std::enable_shared_from_this<Session>
 {
 public:
   Session(tcp::socket socket,std::shared_ptr<CmdReader>& reader);
@@ -18,13 +17,15 @@ public:
 private:
   void Do_read();
   void CloseSession();
+  void Work();
+
   tcp::socket m_socket;
   std::shared_ptr<CmdReader> m_cmdReader;
-  enum { max_length = 1024 };
-  char m_data[max_length];
+  //enum { max_length = 1024 };
+  char m_data[1];
   std::string m_clientId;
   std::stringstream m_strstream;
-}
+};
 
 class Server
 {
@@ -38,6 +39,6 @@ private:
   std::shared_ptr<CmdReader> m_cmdReader;
   std::shared_ptr<ConsoleLogger> m_consoleLogger;
   std::shared_ptr<FileLogger> m_fileLogger;
-}
+};
 
 #endif

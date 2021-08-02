@@ -1,4 +1,4 @@
-#include "inc/async.h"
+#include "inc/Server.h"
 #include "iostream"
 #include <chrono>
 #include <thread>
@@ -7,30 +7,6 @@
 /// @file
 /// @brief Main function. Test for processing commands.
 /// @author btv<example@example.com>
-void Test_1() {
-  std::size_t bulk = 5;
-  auto h = async::connect(bulk);
-  auto h2 = async::connect(1);        
-  async::receive(h, "1", 1);
-  async::receive(h2, "1\n", 2);
-  async::receive(h, "\n2\n3\n4\n5\n6\n{\na\n", 15);
-  async::receive(h, "b\nc\nd\n}\n89\n", 11);
-  async::disconnect(h);
-  async::disconnect(h2);
-}
-
-void Test_2()
-{
-  async::handle_t h2 = async::connect(2);
-  async::receive(h2, "21\n", 3);
-  async::receive(h2, "22\n", 3);
-  async::receive(h2, "23\n", 3);
-  async::receive(h2, "24\n", 3);
-  async::receive(h2, "25\n", 3);
-  async::receive(h2, "26\n", 3);
-  async::disconnect(h2);
-  std::this_thread::sleep_for(std::chrono::seconds(5));
-}
 
 int main(int argc, const char** argv) 
 {  
@@ -61,21 +37,26 @@ int main(int argc, const char** argv)
     std::cerr << "Error: Block size must not be negative!" << std::endl;
     return 1;
   }
-
-  async::handle_t h1 = async::connect(lBlockSize);
-
-  auto result_1 = std::async(std::launch::async, Test_1);
-  auto result_2 = std::async(std::launch::async, Test_2);
-
-  std::string strLine;
-  while ( std::getline(std::cin, strLine) ) {
-    async::receive(h1, strLine.c_str(), strLine.size());
+try {
+    int nPort = std::stoi(argv[1]);
+    int nBulkSize =std::stoi(argv[2]);
+    boost::asio::io_context ioContext;
+ //   tcp::endpoint endpoint(tcp::v4(), nPort);
+    boost::asio::signal_set signals(ioContext, SIGINT, SIGTERM);
+    Server server(ioContext, nPort, nBulkSize);
+    signals.async_wait(
+      [&ioContext](const boost::system::error_code& error, int /*signal_number*/)
+      {
+        if (!error) {
+          ioContext.stop();
+        }
+      }
+    );
+    
+    ioContext.run();
+  } 
+  catch(const std::exception& ex) {
+    std::cerr << ex.what() << std::endl;
   }
-  
-  async::disconnect(h1);
-
-  result_1.wait();
-  result_2.wait();
-
   return 0;
 }

@@ -74,10 +74,7 @@ void FileLogger::Update(std::stringstream& ss) {
     }
     m_cv.notify_one();
 }
-void FileLogger::SetContext(void* a_context)
-{
-    m_context = a_context;
-}
+
 FileLogger::FileLogger(const std::string& name) : m_stop {false}
 {
     for (size_t i=0;i<2;++i) {
@@ -105,7 +102,7 @@ void FileLogger::Work(std::string postfix)
             i++;
             auto time = std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count());
             std::stringstream fileName;
-            fileName<< "bulk_"<<postfix<<"_"<<m_context<<"_"<<time<<"_"<<i<<".log";
+            fileName<< "bulk_"<<postfix<<"_"<<time<<"_"<<i<<".log";
             std::ofstream log(fileName.str(),std::ios::out);
             log << ss << std::endl;
             log.close();

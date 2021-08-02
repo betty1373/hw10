@@ -1,4 +1,4 @@
-#include "Server.h"
+#include "../inc/Server.h"
 Session::Session(tcp::socket socket, std::shared_ptr<CmdReader>& reader)
     : m_socket(std::move(socket)),
       m_cmdReader(reader)
@@ -14,24 +14,41 @@ void Session::Start()
 }
 
 void Session::Do_read()
-  {
+{
     auto self(shared_from_this());
-    m_socket.async_read_some(boost::asio::buffer(m_data, max_length),
+    boost::asio::async_read(m_socket,
+                            boost::asio::buffer(m_data),
         [this, self](boost::system::error_code ec, std::size_t length)
         {
           m_strstream.write(m_data,length);
-          if (ec == boost::asio:error::eof || ec==boost::asio::error::connection_reset) {
-            std::cout << "receive " << length << "=" << std::string{data_, length} << std::endl;
-            Close();
+          if (ec == boost::asio::error::eof || ec==boost::asio::error::connection_reset) {
+            std::cout << "receive " << length << "=" << std::string{m_data, length} << std::endl;
+            CloseSession();
           }
           else {
-            
-
+             Work();
+          }
+          if (!ec) {
+            Do_read();
           }
         });
-  }
-void Session:CloseSession() {
-  m_cmdReader->DeleteClient(m_ClientId);
+}
+void Session::CloseSession() {
+  m_cmdReader->DeleteClient(m_clientId);
+}
+void Session::Work() 
+{ 
+      std::string cmd;
+      m_strstream.seekp(0);
+      while (!std::getline(m_strstream, cmd).eof() ) {
+        if (cmd.length() > 0 && cmd[cmd.length()-1]=='\r') {
+          cmd = cmd.substr(0,cmd.length()-1);
+        }
+        m_cmdReader->NewCmd(m_clientId,cmd);
+      }
+      m_strstream.clear();
+      m_strstream.str("");
+      m_strstream.write(cmd.c_str(),cmd.size());
 }
 Server::Server(boost::asio::io_context& io_context, short port, std::size_t numCmds)
     : m_acceptor(io_context, tcp::endpoint(tcp::v4(), port)),

@@ -44,8 +44,7 @@ public:
      ~FileLogger();
 /// @brief Puts data from stringstream to queue
     void Update(std::stringstream& ss) override;
-/// @brief Sets context
-    void SetContext(void* a_context);
+
 private:
     FileLogger(const std::string& name);
 /// @brief Gets data from queue and out to file
@@ -55,7 +54,6 @@ private:
 /// @brief Subscribe to receiving notifications
     void SetCmdReader(std::shared_ptr<CmdReader>& _reader);
 
-    void* m_context;
     std::weak_ptr<CmdReader> m_reader;
      std::atomic<bool> m_stop;
     std::vector<std::thread> m_threads;
