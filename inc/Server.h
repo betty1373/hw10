@@ -17,11 +17,11 @@ public:
   void Start();
 private:
   void Do_read();
-  
+  void CloseSession();
   tcp::socket m_socket;
   std::shared_ptr<CmdReader> m_cmdReader;
   enum { max_length = 1024 };
-  char data_[max_length];
+  char m_data[max_length];
   std::string m_clientId;
   std::stringstream m_strstream;
 }

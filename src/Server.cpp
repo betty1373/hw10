@@ -16,18 +16,23 @@ void Session::Start()
 void Session::Do_read()
   {
     auto self(shared_from_this());
-    m_socket.async_read_some(boost::asio::buffer(data_, max_length),
+    m_socket.async_read_some(boost::asio::buffer(m_data, max_length),
         [this, self](boost::system::error_code ec, std::size_t length)
         {
-          
-          if (!ec)
-          {
+          m_strstream.write(m_data,length);
+          if (ec == boost::asio:error::eof || ec==boost::asio::error::connection_reset) {
             std::cout << "receive " << length << "=" << std::string{data_, length} << std::endl;
-           
+            Close();
+          }
+          else {
+            
+
           }
         });
   }
-
+void Session:CloseSession() {
+  m_cmdReader->DeleteClient(m_ClientId);
+}
 Server::Server(boost::asio::io_context& io_context, short port, std::size_t numCmds)
     : m_acceptor(io_context, tcp::endpoint(tcp::v4(), port)),
     m_socket(io_context)
