@@ -10,7 +10,9 @@
 #include <chrono>
 #include <condition_variable>
 #include "Observer.h"
-
+/// @file
+/// @brief Structure for save cmds
+/// @author btv<example@example.com>
 struct CmdBlk
 {
     std::size_t m_cnt_braces;
@@ -33,18 +35,21 @@ public:
    
 /// @brief Processes cmds and inform subscribers
     void NewCmd(const std::string& clientId, const std::string& cmd);
-
+/// @brief Add client to set
     void AddClient(const std::string& client);
+/// @brief Delete client from set
     void DeleteClient(const std::string& client);
 private:
 /// @brief Private Constructor
     CmdReader(size_t num_cmds,std::istream& istream=std::cin);
 /// @brief Forms batch to stringstream
     std::stringstream FormBatch(std::vector<std::string>& cmds);
-
+/// @brief Get client's cmds
     std::map<std::string,CmdBlk>::iterator GetContext(const std::string& clientId);
+/// @brief Add client's cmds
     std::map<std::string,CmdBlk>::iterator AddContext(const std::string& clientId);
 
+/// @brief Push cmds to loggers
     void CmdLog(bool to_log=false);
 
     std::map<std::string,CmdBlk> m_contexts;

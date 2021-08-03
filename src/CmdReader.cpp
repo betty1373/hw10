@@ -75,7 +75,7 @@ void CmdReader::CmdLog(bool to_log) {
 void CmdReader::AddClient(const std::string& client) {
     m_clients.emplace(client);
 }
-void CmdReader::DeleteClient(const std::string& client){
+void CmdReader::DeleteClient(const std::string& client) {
     m_clients.erase(client);
     if (m_clients.size()==0) {
         CmdLog(true);
@@ -83,13 +83,15 @@ void CmdReader::DeleteClient(const std::string& client){
 }   
 CmdReader::CmdReader(size_t num_cmds,std::istream& istream) 
     : m_num_cmds{num_cmds},
-        m_istream(istream)
+      m_istream(istream)
 {
     //m_cmds.reserve(m_num_cmds);
 }
 
 std::stringstream CmdReader::FormBatch(std::vector<std::string>& cmds) {
+    
     std::stringstream ss;
+    
     for (auto it_cmd = cmds.cbegin();it_cmd!=cmds.cend();it_cmd++) {
         if (it_cmd !=cmds.cbegin())
             ss<< ", "<<*it_cmd;
@@ -99,19 +101,23 @@ std::stringstream CmdReader::FormBatch(std::vector<std::string>& cmds) {
     return ss;     
 }
 std::map<std::string,CmdBlk>::iterator CmdReader::GetContext(const std::string& clientId) {
+    
     auto it = m_contexts.find(clientId);
+    
     if (it==m_contexts.end()) {
         it = AddContext("main");
     }
     return it;
 }
-std::map<std::string,CmdBlk>::iterator CmdReader::AddContext(const std::string& clientId){
+std::map<std::string,CmdBlk>::iterator CmdReader::AddContext(const std::string& clientId) {
+
     auto it = m_contexts.find(clientId);
+    
     if (it==m_contexts.end()) {
-         auto [insIt, inserted] = m_contexts.try_emplace(clientId);
-         if (inserted) {
-             it = insIt;
-         }
+        auto [insIt, inserted] = m_contexts.try_emplace(clientId);
+        if (inserted) {
+            it = insIt;
+        }
     }
     return it;
 }
