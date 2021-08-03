@@ -1,5 +1,5 @@
 <map id="inc/Server.h" name="inc/Server.h">
-<area shape="rect" id="node1" title=" " alt="" coords="741,5,832,32"/>
+<area shape="rect" id="node1" title="Class for clients&#39;s session." alt="" coords="741,5,832,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="174,80,234,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,229,77,256"/>
 <area shape="rect" id="node4" title=" " alt="" coords="737,304,805,331"/>
@@ -12,7 +12,7 @@
 <area shape="rect" id="node11" title=" " alt="" coords="253,229,310,256"/>
 <area shape="rect" id="node12" title=" " alt="" coords="795,155,853,181"/>
 <area shape="rect" id="node13" title=" " alt="" coords="102,229,229,256"/>
-<area shape="rect" id="node14" href="$_cmd_reader_8h.html" title="Class for processing commands and notifying subscribers." alt="" coords="411,155,511,181"/>
+<area shape="rect" id="node14" href="$_cmd_reader_8h.html" title="Structure for save cmds." alt="" coords="411,155,511,181"/>
 <area shape="rect" id="node15" title=" " alt="" coords="420,229,479,256"/>
 <area shape="rect" id="node16" title=" " alt="" coords="613,229,667,256"/>
 <area shape="rect" id="node17" title=" " alt="" coords="691,229,730,256"/>

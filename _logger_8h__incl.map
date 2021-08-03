@@ -6,7 +6,7 @@
 <area shape="rect" id="node5" title=" " alt="" coords="118,155,175,181"/>
 <area shape="rect" id="node6" title=" " alt="" coords="604,80,663,107"/>
 <area shape="rect" id="node7" title=" " alt="" coords="199,155,326,181"/>
-<area shape="rect" id="node8" href="$_cmd_reader_8h.html" title="Class for processing commands and notifying subscribers." alt="" coords="481,80,581,107"/>
+<area shape="rect" id="node8" href="$_cmd_reader_8h.html" title="Structure for save cmds." alt="" coords="481,80,581,107"/>
 <area shape="rect" id="node9" title=" " alt="" coords="545,155,617,181"/>
 <area shape="rect" id="node10" title=" " alt="" coords="641,155,700,181"/>
 <area shape="rect" id="node11" title=" " alt="" coords="725,155,779,181"/>
