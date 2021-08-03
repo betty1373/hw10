@@ -53,10 +53,10 @@ void CmdReader::NewCmd(const std::string& clientId, const std::string& cmd)
 }
 void CmdReader::CmdLog(bool to_log) {
   std::unique_lock<std::mutex> locker(m_mutex); 
-  if (to_log) 
-  {
-      std::cout<<"last"<<std::endl;
-  }
+  //if (to_log) 
+  //{
+    //  std::cout<<"last"<<std::endl;
+ // }
   auto it = m_contexts.begin();
   while (it != m_contexts.end() ) {
     auto& context = it->second; 
