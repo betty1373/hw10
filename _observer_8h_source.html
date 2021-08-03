@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>async: inc/Observer.h Source File</title>
+<title>bulk_server: inc/Observer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">async
+   <div id="projectname">bulk_server
    </div>
-   <div id="projectbrief">otus hw8</div>
+   <div id="projectbrief">otus hw9</div>
   </td>
  </tr>
  </tbody>
@@ -85,13 +85,13 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_observable.html#a058acb5a674eba2b96648c66a27440d8">   16</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_observable.html#a058acb5a674eba2b96648c66a27440d8">~Observable</a>()= <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_observable.html#a3f64dccc8b909a55cb41301d9f4053c0">   17</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_observable.html#a3f64dccc8b909a55cb41301d9f4053c0">Subscribe</a>(<span class="keyword">const</span> std::shared_ptr&lt;Observer&gt;&amp; obs) = 0;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="comment">// virtual void Unsubscribe(const std::shared_ptr&lt;Observer&gt;&amp; obs) = 0;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_observable.html#a52aa9260a018feb3e14c4607ab2778ac">   19</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_observable.html#a52aa9260a018feb3e14c4607ab2778ac">Notify</a>() = 0;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_observable.html#adbb20164eab7affe5ed187385648d056">   19</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_observable.html#adbb20164eab7affe5ed187385648d056">Notify</a>(std::vector&lt;std::string&gt;&amp; cmds) = 0;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_observable_html"><div class="ttname"><a href="class_observable.html">Observable</a></div><div class="ttdef"><b>Definition:</b> Observer.h:14</div></div>
 <div class="ttc" id="aclass_observable_html_a058acb5a674eba2b96648c66a27440d8"><div class="ttname"><a href="class_observable.html#a058acb5a674eba2b96648c66a27440d8">Observable::~Observable</a></div><div class="ttdeci">virtual ~Observable()=default</div></div>
 <div class="ttc" id="aclass_observable_html_a3f64dccc8b909a55cb41301d9f4053c0"><div class="ttname"><a href="class_observable.html#a3f64dccc8b909a55cb41301d9f4053c0">Observable::Subscribe</a></div><div class="ttdeci">virtual void Subscribe(const std::shared_ptr&lt; Observer &gt; &amp;obs)=0</div></div>
-<div class="ttc" id="aclass_observable_html_a52aa9260a018feb3e14c4607ab2778ac"><div class="ttname"><a href="class_observable.html#a52aa9260a018feb3e14c4607ab2778ac">Observable::Notify</a></div><div class="ttdeci">virtual void Notify()=0</div></div>
+<div class="ttc" id="aclass_observable_html_adbb20164eab7affe5ed187385648d056"><div class="ttname"><a href="class_observable.html#adbb20164eab7affe5ed187385648d056">Observable::Notify</a></div><div class="ttdeci">virtual void Notify(std::vector&lt; std::string &gt; &amp;cmds)=0</div></div>
 <div class="ttc" id="aclass_observer_html"><div class="ttname"><a href="class_observer.html">Observer</a></div><div class="ttdef"><b>Definition:</b> Observer.h:8</div></div>
 <div class="ttc" id="aclass_observer_html_a7b2adc9ad992dd9abe17433b3ab7e89d"><div class="ttname"><a href="class_observer.html#a7b2adc9ad992dd9abe17433b3ab7e89d">Observer::Update</a></div><div class="ttdeci">virtual void Update(std::stringstream &amp;ss)=0</div></div>
 <div class="ttc" id="aclass_observer_html_afcc6b67be6c386f2f3d2c363aa59cb47"><div class="ttname"><a href="class_observer.html#afcc6b67be6c386f2f3d2c363aa59cb47">Observer::~Observer</a></div><div class="ttdeci">virtual ~Observer()</div><div class="ttdef"><b>Definition:</b> Observer.h:10</div></div>

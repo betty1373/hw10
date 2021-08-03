@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['disconnect_127',['disconnect',['../namespaceasync.html#a04233bf9bec326f7bcb4e1a9d5b8ee9d',1,'async']]]
+  ['deleteclient_102',['DeleteClient',['../class_cmd_reader.html#aa416fa5fe69e409bd0a4f2fb45d3af38',1,'CmdReader']]]
 ];

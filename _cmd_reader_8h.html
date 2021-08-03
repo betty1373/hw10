@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>async: inc/CmdReader.h File Reference</title>
+<title>bulk_server: inc/CmdReader.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">async
+   <div id="projectname">bulk_server
    </div>
-   <div id="projectbrief">otus hw8</div>
+   <div id="projectbrief">otus hw9</div>
   </td>
  </tr>
  </tbody>
@@ -79,22 +79,30 @@ $(function() {
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;list&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;condition_variable&gt;</code><br />
 <code>#include &quot;<a class="el" href="_observer_8h_source.html">Observer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CmdReader.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="_cmd_reader_8h__incl.png" border="0" usemap="#ainc_2_cmd_reader_8h" alt=""/></div>
 <map name="ainc_2_cmd_reader_8h" id="ainc_2_cmd_reader_8h">
-<area shape="rect" title="Class for processing commands and notifying subscribers." alt="" coords="186,5,307,32"/>
+<area shape="rect" title="Class for processing commands and notifying subscribers." alt="" coords="319,5,441,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,77,107"/>
 <area shape="rect" title=" " alt="" coords="101,80,160,107"/>
 <area shape="rect" title=" " alt="" coords="185,80,239,107"/>
 <area shape="rect" title=" " alt="" coords="263,80,302,107"/>
-<area shape="rect" title=" " alt="" coords="327,80,388,107"/>
-<area shape="rect" href="_observer_8h.html" title="Abstract Interfaces for ObserverPattern." alt="" coords="412,80,497,107"/>
-<area shape="rect" title=" " alt="" coords="373,155,443,181"/>
-<area shape="rect" title=" " alt="" coords="467,155,535,181"/>
+<area shape="rect" title=" " alt="" coords="327,80,367,107"/>
+<area shape="rect" title=" " alt="" coords="391,80,438,107"/>
+<area shape="rect" title=" " alt="" coords="462,80,519,107"/>
+<area shape="rect" title=" " alt="" coords="544,80,605,107"/>
+<area shape="rect" title=" " alt="" coords="630,80,757,107"/>
+<area shape="rect" href="_observer_8h.html" title="Abstract Interfaces for ObserverPattern." alt="" coords="781,80,867,107"/>
+<area shape="rect" title=" " alt="" coords="743,155,812,181"/>
+<area shape="rect" title=" " alt="" coords="837,155,905,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -102,15 +110,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="_cmd_reader_8h__dep__incl.png" border="0" usemap="#ainc_2_cmd_reader_8hdep" alt=""/></div>
 <map name="ainc_2_cmd_reader_8hdep" id="ainc_2_cmd_reader_8hdep">
-<area shape="rect" title="Class for processing commands and notifying subscribers." alt="" coords="244,5,365,32"/>
-<area shape="rect" href="_logger_8h.html" title="Class outs data from stringstream to console." alt="" coords="189,80,282,107"/>
-<area shape="rect" href="_cmd_reader_8cpp.html" title=" " alt="" coords="306,80,442,107"/>
-<area shape="rect" href="_context_8h.html" title="Class context for async processing commands." alt="" coords="128,155,225,181"/>
-<area shape="rect" href="async_8cpp.html" title=" " alt="" coords="5,229,108,256"/>
-<area shape="rect" href="_server_8h.html" title=" " alt="" coords="250,155,341,181"/>
-<area shape="rect" href="_logger_8cpp.html" title=" " alt="" coords="365,155,473,181"/>
-<area shape="rect" href="_context_8cpp.html" title=" " alt="" coords="133,229,245,256"/>
-<area shape="rect" href="_server_8cpp.html" title=" " alt="" coords="269,229,375,256"/>
+<area shape="rect" title="Class for processing commands and notifying subscribers." alt="" coords="170,5,291,32"/>
+<area shape="rect" href="_logger_8h.html" title="Class outs data from stringstream to console." alt="" coords="115,80,208,107"/>
+<area shape="rect" href="_cmd_reader_8cpp.html" title=" " alt="" coords="232,80,368,107"/>
+<area shape="rect" href="_server_8h.html" title=" " alt="" coords="55,155,145,181"/>
+<area shape="rect" href="_logger_8cpp.html" title=" " alt="" coords="170,155,278,181"/>
+<area shape="rect" href="main_8cpp.html" title="Main function. Test for processing commands." alt="" coords="5,229,80,256"/>
+<area shape="rect" href="_server_8cpp.html" title=" " alt="" coords="104,229,211,256"/>
 </map>
 </div>
 </div>
@@ -118,6 +124,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_cmd_blk.html">CmdBlk</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cmd_reader.html">CmdReader</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

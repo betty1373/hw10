@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['target_5flink_5flibraries_141',['target_link_libraries',['../_c_make_lists_8txt.html#aeaa37a1c6a6b486ddedb610d2ab2d2e5',1,'CMakeLists.txt']]],
-  ['test_5f1_142',['Test_1',['../main_8cpp.html#a92f496b250ba79d9cc7a29f566225cc0',1,'main.cpp']]],
-  ['test_5f2_143',['Test_2',['../main_8cpp.html#aa321562379e044db7c2cfd2921f15bd1',1,'main.cpp']]]
+  ['_7ecmdreader_113',['~CmdReader',['../class_cmd_reader.html#a446cc750cc238cda7241143295c4fd64',1,'CmdReader']]],
+  ['_7econsolelogger_114',['~ConsoleLogger',['../class_console_logger.html#a242e88aa9495249d5a7fbdfc4f8886ee',1,'ConsoleLogger']]],
+  ['_7efilelogger_115',['~FileLogger',['../class_file_logger.html#ab08af44f2de3fe1b51158132f9a399dd',1,'FileLogger']]],
+  ['_7eobservable_116',['~Observable',['../class_observable.html#a058acb5a674eba2b96648c66a27440d8',1,'Observable']]],
+  ['_7eobserver_117',['~Observer',['../class_observer.html#afcc6b67be6c386f2f3d2c363aa59cb47',1,'Observer']]]
 ];

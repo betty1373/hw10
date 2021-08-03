@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>async: Observable Class Reference</title>
+<title>bulk_server: Observable Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">async
+   <div id="projectname">bulk_server
    </div>
-   <div id="projectbrief">otus hw8</div>
+   <div id="projectbrief">otus hw9</div>
   </td>
  </tr>
  </tbody>
@@ -87,8 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a058acb5a674eba2b96648c66a27440d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f64dccc8b909a55cb41301d9f4053c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observable.html#a3f64dccc8b909a55cb41301d9f4053c0">Subscribe</a> (const std::shared_ptr&lt; <a class="el" href="class_observer.html">Observer</a> &gt; &amp;obs)=0</td></tr>
 <tr class="separator:a3f64dccc8b909a55cb41301d9f4053c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52aa9260a018feb3e14c4607ab2778ac"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observable.html#a52aa9260a018feb3e14c4607ab2778ac">Notify</a> ()=0</td></tr>
-<tr class="separator:a52aa9260a018feb3e14c4607ab2778ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb20164eab7affe5ed187385648d056"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observable.html#adbb20164eab7affe5ed187385648d056">Notify</a> (std::vector&lt; std::string &gt; &amp;cmds)=0</td></tr>
+<tr class="separator:adbb20164eab7affe5ed187385648d056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a058acb5a674eba2b96648c66a27440d8"></a>
@@ -117,8 +117,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a52aa9260a018feb3e14c4607ab2778ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52aa9260a018feb3e14c4607ab2778ac">&#9670;&nbsp;</a></span>Notify()</h2>
+<a id="adbb20164eab7affe5ed187385648d056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb20164eab7affe5ed187385648d056">&#9670;&nbsp;</a></span>Notify()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +129,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Observable::Notify </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cmds</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -140,7 +141,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_cmd_reader.html#adce37b14013a2c6a4064dcf66465fa5c">CmdReader</a>.</p>
+<p>Implemented in <a class="el" href="class_cmd_reader.html#ad3f1a60a45f1e332cddc9ed948152828">CmdReader</a>.</p>
 
 </div>
 </div>

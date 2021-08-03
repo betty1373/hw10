@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>bulk_server: Session Class Reference</title>
+<title>bulk_server: CmdBlk Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,89 +64,84 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_session-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="struct_cmd_blk-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Session Class Reference</div>  </div>
+<div class="title">CmdBlk Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_server_8h_source.html">Server.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Session:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_session__inherit__graph.png" border="0" usemap="#a_session_inherit__map" alt="Inheritance graph"/></div>
-<map name="a_session_inherit__map" id="a_session_inherit__map">
-<area shape="rect" title=" " alt="" coords="47,95,116,121"/>
-<area shape="rect" title=" " alt="" coords="5,5,157,47"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Session:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_session__coll__graph.png" border="0" usemap="#a_session_coll__map" alt="Collaboration graph"/></div>
-<map name="a_session_coll__map" id="a_session_coll__map">
-<area shape="rect" title=" " alt="" coords="47,95,116,121"/>
-<area shape="rect" title=" " alt="" coords="5,5,157,47"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<p><code>#include &lt;<a class="el" href="_cmd_reader_8h_source.html">CmdReader.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2eb90c8e6e42f27111c802a40e204320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_session.html#a2eb90c8e6e42f27111c802a40e204320">Session</a> (tcp::socket socket, std::shared_ptr&lt; <a class="el" href="class_cmd_reader.html">CmdReader</a> &gt; &amp;reader)</td></tr>
-<tr class="separator:a2eb90c8e6e42f27111c802a40e204320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68020021e9d13c85b641d853646e8b7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_session.html#a68020021e9d13c85b641d853646e8b7a">Start</a> ()</td></tr>
-<tr class="separator:a68020021e9d13c85b641d853646e8b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27d30482d588b33284e43fbac5c0fd58"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_cmd_blk.html#a27d30482d588b33284e43fbac5c0fd58">CmdBlk</a> ()=default</td></tr>
+<tr class="separator:a27d30482d588b33284e43fbac5c0fd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a66f7130754ad302368354c5493a6ea1e"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_cmd_blk.html#a66f7130754ad302368354c5493a6ea1e">m_cnt_braces</a></td></tr>
+<tr class="separator:a66f7130754ad302368354c5493a6ea1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb01890ae4b7b90afbdfd4f69b8703e1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_cmd_blk.html#adb01890ae4b7b90afbdfd4f69b8703e1">m_cmds</a></td></tr>
+<tr class="separator:adb01890ae4b7b90afbdfd4f69b8703e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2eb90c8e6e42f27111c802a40e204320"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2eb90c8e6e42f27111c802a40e204320">&#9670;&nbsp;</a></span>Session()</h2>
+<a id="a27d30482d588b33284e43fbac5c0fd58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d30482d588b33284e43fbac5c0fd58">&#9670;&nbsp;</a></span>CmdBlk()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Session::Session </td>
-          <td>(</td>
-          <td class="paramtype">tcp::socket&#160;</td>
-          <td class="paramname"><em>socket</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_cmd_reader.html">CmdReader</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>reader</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a68020021e9d13c85b641d853646e8b7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68020021e9d13c85b641d853646e8b7a">&#9670;&nbsp;</a></span>Start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Session::Start </td>
+          <td class="memname">CmdBlk::CmdBlk </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>inc/<a class="el" href="_server_8h_source.html">Server.h</a></li>
-<li>src/<a class="el" href="_server_8cpp.html">Server.cpp</a></li>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adb01890ae4b7b90afbdfd4f69b8703e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb01890ae4b7b90afbdfd4f69b8703e1">&#9670;&nbsp;</a></span>m_cmds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; CmdBlk::m_cmds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66f7130754ad302368354c5493a6ea1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66f7130754ad302368354c5493a6ea1e">&#9670;&nbsp;</a></span>m_cnt_braces</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t CmdBlk::m_cnt_braces</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>inc/<a class="el" href="_cmd_reader_8h_source.html">CmdReader.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

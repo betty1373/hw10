@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>async: inc/Logger.h Source File</title>
+<title>bulk_server: inc/Logger.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">async
+   <div id="projectname">bulk_server
    </div>
-   <div id="projectbrief">otus hw8</div>
+   <div id="projectbrief">otus hw9</div>
   </td>
  </tr>
  </tbody>
@@ -103,22 +103,21 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;     <span class="keyword">static</span> std::shared_ptr&lt;FileLogger&gt; <a class="code" href="class_file_logger.html#a9adbc0f3909fcfc718d80d51729e8716">Create</a>(<span class="keyword">const</span> std::string&amp; name,std::shared_ptr&lt;CmdReader&gt;&amp; reader);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;     <a class="code" href="class_file_logger.html#ab08af44f2de3fe1b51158132f9a399dd">~FileLogger</a>();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_file_logger.html#a682946c821d8a412b3f77db99fa2afde">Update</a>(std::stringstream&amp; ss) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_file_logger.html#abbd17635e319df163337b1eaf71b176b">SetContext</a>(<span class="keywordtype">void</span>* a_context);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_file_logger.html">FileLogger</a>(<span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> Work(std::string postfix);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> StopWork();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> SetCmdReader(std::shared_ptr&lt;CmdReader&gt;&amp; _reader);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>* m_context;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::weak_ptr&lt;CmdReader&gt; m_reader;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;     std::atomic&lt;bool&gt; m_stop;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::vector&lt;std::thread&gt; m_threads;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::mutex m_mutex;   </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::condition_variable m_cv;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::queue&lt;std::string&gt; m_deque;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_file_logger.html">FileLogger</a>(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> Work(std::string postfix);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> StopWork();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> SetCmdReader(std::shared_ptr&lt;CmdReader&gt;&amp; _reader);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::weak_ptr&lt;CmdReader&gt; m_reader;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;     std::atomic&lt;bool&gt; m_stop;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::vector&lt;std::thread&gt; m_threads;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::mutex m_mutex;   </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::condition_variable m_cv;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::queue&lt;std::string&gt; m_deque;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_cmd_reader_8h_html"><div class="ttname"><a href="_cmd_reader_8h.html">CmdReader.h</a></div><div class="ttdoc">Class for processing commands and notifying subscribers.</div></div>
 <div class="ttc" id="aclass_console_logger_html"><div class="ttname"><a href="class_console_logger.html">ConsoleLogger</a></div><div class="ttdef"><b>Definition:</b> Logger.h:13</div></div>
 <div class="ttc" id="aclass_console_logger_html_a242e88aa9495249d5a7fbdfc4f8886ee"><div class="ttname"><a href="class_console_logger.html#a242e88aa9495249d5a7fbdfc4f8886ee">ConsoleLogger::~ConsoleLogger</a></div><div class="ttdeci">~ConsoleLogger()</div><div class="ttdef"><b>Definition:</b> Logger.cpp:7</div></div>
@@ -128,7 +127,6 @@ $(function() {
 <div class="ttc" id="aclass_file_logger_html_a682946c821d8a412b3f77db99fa2afde"><div class="ttname"><a href="class_file_logger.html#a682946c821d8a412b3f77db99fa2afde">FileLogger::Update</a></div><div class="ttdeci">void Update(std::stringstream &amp;ss) override</div><div class="ttdoc">Puts data from stringstream to queue.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:70</div></div>
 <div class="ttc" id="aclass_file_logger_html_a9adbc0f3909fcfc718d80d51729e8716"><div class="ttname"><a href="class_file_logger.html#a9adbc0f3909fcfc718d80d51729e8716">FileLogger::Create</a></div><div class="ttdeci">static std::shared_ptr&lt; FileLogger &gt; Create(const std::string &amp;name, std::shared_ptr&lt; CmdReader &gt; &amp;reader)</div><div class="ttdoc">Create object class - PatternCreater</div><div class="ttdef"><b>Definition:</b> Logger.cpp:61</div></div>
 <div class="ttc" id="aclass_file_logger_html_ab08af44f2de3fe1b51158132f9a399dd"><div class="ttname"><a href="class_file_logger.html#ab08af44f2de3fe1b51158132f9a399dd">FileLogger::~FileLogger</a></div><div class="ttdeci">~FileLogger()</div><div class="ttdef"><b>Definition:</b> Logger.cpp:66</div></div>
-<div class="ttc" id="aclass_file_logger_html_abbd17635e319df163337b1eaf71b176b"><div class="ttname"><a href="class_file_logger.html#abbd17635e319df163337b1eaf71b176b">FileLogger::SetContext</a></div><div class="ttdeci">void SetContext(void *a_context)</div><div class="ttdoc">Sets context.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:77</div></div>
 <div class="ttc" id="aclass_observer_html"><div class="ttname"><a href="class_observer.html">Observer</a></div><div class="ttdef"><b>Definition:</b> Observer.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
