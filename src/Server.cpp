@@ -1,5 +1,5 @@
 #include "../inc/Server.h"
-Session::Session(tcp::socket socket, std::shared_ptr<CmdReader>& reader)
+Session::Session(tcp::socket socket,  std::shared_ptr<CmdReader>& reader)
     : m_socket(std::move(socket)),
       m_cmdReader(reader)
 {
@@ -22,10 +22,11 @@ void Session::Do_read()
         {
           m_strstream.write(m_data,length);
           if (ec == boost::asio::error::eof || ec==boost::asio::error::connection_reset) {
-            std::cout << "receive " << length << "=" << std::string{m_data, length} << std::endl;
+            
             CloseSession();
           }
           else {
+           // std::cout << "receive " << length << "=" << std::string{m_data, length} << std::endl;
              Work();
           }
           if (!ec) {
@@ -34,6 +35,7 @@ void Session::Do_read()
         });
 }
 void Session::CloseSession() {
+  //std::cout<<"Close Session "<<m_clientId<<std::endl;
   m_cmdReader->DeleteClient(m_clientId);
 }
 void Session::Work() 
@@ -41,8 +43,8 @@ void Session::Work()
       std::string cmd;
       m_strstream.seekp(0);
       while (!std::getline(m_strstream, cmd).eof() ) {
-        if (cmd.length() > 0 && cmd[cmd.length()-1]=='\r') {
-          cmd = cmd.substr(0,cmd.length()-1);
+         if (cmd.length() > 0 && cmd[cmd.length()-1]=='\r') {
+           cmd = cmd.substr(0,cmd.length()-1);
         }
         m_cmdReader->NewCmd(m_clientId,cmd);
       }
@@ -50,8 +52,8 @@ void Session::Work()
       m_strstream.str("");
       m_strstream.write(cmd.c_str(),cmd.size());
 }
-Server::Server(boost::asio::io_context& io_context, short port, std::size_t numCmds)
-    : m_acceptor(io_context, tcp::endpoint(tcp::v4(), port)),
+Server::Server(boost::asio::io_context& io_context, const tcp::endpoint& port, std::size_t numCmds)
+    : m_acceptor(io_context, port),
     m_socket(io_context)
   {
     m_cmdReader =  CmdReader::Create(static_cast<size_t>(numCmds));

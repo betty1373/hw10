@@ -11,9 +11,13 @@
 #include <condition_variable>
 #include "Observer.h"
 
+struct CmdBlk
+{
+    std::size_t m_cnt_braces;
+    std::vector<std::string> m_cmds;
+    CmdBlk()=default;
+};
 
-using Context = std::map<std::string,std::pair<std::size_t,std::vector<std::string>>>;
-using ContextIt = std::map<std::string,std::pair<std::size_t,std::vector<std::string>>>::iterator;
 /// @file
 /// @brief Class for processing commands and notifying subscribers.
 /// @author btv<example@example.com>
@@ -21,7 +25,7 @@ class CmdReader : public Observable {
 public:
 /// @brief Create object class - PatternCreater
     static std::shared_ptr<CmdReader> Create(size_t num_cmds,std::istream& istream=std::cin);
-    ~CmdReader() {}
+    ~CmdReader();
 /// @brief Adds subscribers to list
     void Subscribe(const std::shared_ptr<Observer>& obs) override;    
 /// @brief Notifies subscribers and sends batch of cmds to their   
@@ -38,12 +42,14 @@ private:
 /// @brief Forms batch to stringstream
     std::stringstream FormBatch(std::vector<std::string>& cmds);
 
-    ContextIt GetContext(const std::string& clientId);
-    ContextIt AddContext(const std::string& clientId);
-    void CmdLog(bool to_log);
+    std::map<std::string,CmdBlk>::iterator GetContext(const std::string& clientId);
+    std::map<std::string,CmdBlk>::iterator AddContext(const std::string& clientId);
 
-    Context m_contexts;
+    void CmdLog(bool to_log=false);
+
+    std::map<std::string,CmdBlk> m_contexts;
     std::set<std::string> m_clients;
+
     std::mutex m_mutex;
     std::condition_variable m_cv;
 
@@ -53,5 +59,4 @@ private:
     //std::vector<std::string> m_cmds;
     std::list<std::weak_ptr<Observer>> m_observers;
 };
-
 #endif

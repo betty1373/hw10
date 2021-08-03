@@ -30,7 +30,7 @@ private:
 class Server
 {
 public:
-  Server(boost::asio::io_context& io_context, short port, std::size_t numCmds); 
+  Server(boost::asio::io_context& io_context,  const tcp::endpoint& port, std::size_t numCmds); 
 private:
   void Do_accept();
 

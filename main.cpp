@@ -41,9 +41,9 @@ try {
     int nPort = std::stoi(argv[1]);
     int nBulkSize =std::stoi(argv[2]);
     boost::asio::io_context ioContext;
- //   tcp::endpoint endpoint(tcp::v4(), nPort);
+    tcp::endpoint endpoint(tcp::v4(), nPort);
     boost::asio::signal_set signals(ioContext, SIGINT, SIGTERM);
-    Server server(ioContext, nPort, nBulkSize);
+    Server server(ioContext, endpoint, nBulkSize);
     signals.async_wait(
       [&ioContext](const boost::system::error_code& error, int /*signal_number*/)
       {

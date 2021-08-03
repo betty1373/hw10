@@ -4,7 +4,9 @@ std::shared_ptr<CmdReader> CmdReader::Create(size_t num_cmds,std::istream& istre
     auto ptr = std::shared_ptr<CmdReader>{ new CmdReader{num_cmds,istream}};
     return ptr;
 }
-    
+ CmdReader::~CmdReader() {
+    //m_cv.notify_all();
+}
 void CmdReader::Subscribe(const std::shared_ptr<Observer>& obs) {
      m_observers.emplace_back(obs);
 }
@@ -33,31 +35,35 @@ void CmdReader::NewCmd(const std::string& clientId, const std::string& cmd)
         
         if (cmd=="{") {
             context = AddContext(clientId);
-            context->second.first++;
+            context->second.m_cnt_braces++;
         }
         else if (cmd=="}") {
-            if (context->second.first>0) {
-                context->second.first--;
+            if (context->second.m_cnt_braces>0) {
+                context->second.m_cnt_braces--;
             }
             else {
-                context->second.second.resize(0);
+                context->second.m_cmds.resize(0);
             }
         }
         else {
-            context->second.second.emplace_back(cmd);
+            context->second.m_cmds.emplace_back(cmd);
         }
     }
+    CmdLog();
 }
 void CmdReader::CmdLog(bool to_log) {
-  std::unique_lock<std::mutex> locker(m_mutex);
-
+  std::unique_lock<std::mutex> locker(m_mutex); 
+  if (to_log) 
+  {
+      std::cout<<"last"<<std::endl;
+  }
   auto it = m_contexts.begin();
   while (it != m_contexts.end() ) {
     auto& context = it->second; 
-    if (!context.first && (to_log || context.second.size() >= m_num_cmds) ) {
-      if (context.second.size() > 0) {
-        Notify(context.second);    
-        context.second.resize(0);       
+    if (!context.m_cnt_braces && (to_log || context.m_cmds.size() >= m_num_cmds) ) {
+      if (context.m_cmds.size() > 0) {
+        Notify(context.m_cmds);    
+        context.m_cmds.resize(0);       
       }
       it = m_contexts.erase(it);
     }
@@ -92,14 +98,14 @@ std::stringstream CmdReader::FormBatch(std::vector<std::string>& cmds) {
     }
     return ss;     
 }
-ContextIt CmdReader::GetContext(const std::string& clientId) {
+std::map<std::string,CmdBlk>::iterator CmdReader::GetContext(const std::string& clientId) {
     auto it = m_contexts.find(clientId);
     if (it==m_contexts.end()) {
         it = AddContext("main");
     }
     return it;
 }
-ContextIt CmdReader::AddContext(const std::string& clientId){
+std::map<std::string,CmdBlk>::iterator CmdReader::AddContext(const std::string& clientId){
     auto it = m_contexts.find(clientId);
     if (it==m_contexts.end()) {
          auto [insIt, inserted] = m_contexts.try_emplace(clientId);

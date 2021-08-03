@@ -6,7 +6,7 @@ endif()
 project(bulk_server VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS system REQUIED)
-set(CXX_STANDARD 17)
+
 configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
 add_library(bulk SHARED ${PROJECT_SOURCE_DIR}/src/CmdReader.cpp 
@@ -14,17 +14,13 @@ add_library(bulk SHARED ${PROJECT_SOURCE_DIR}/src/CmdReader.cpp
                          ${PROJECT_SOURCE_DIR}/src/Server.cpp)
 
 add_executable(bulk_server ${PROJECT_SOURCE_DIR}/main.cpp)
-set_target_properties(bulk PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-    COMPILE_OPTIONS "-Wall;-Wunused-parameter;-Wextra;-pedantic;-Werror"
-)
-set_target_properties(bulk_server PROPERTIES
+set_target_properties(bulk bulk_server PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wall;-Wunused-parameter;-Wextra;-pedantic;-Werror"
 )
 target_link_libraries(bulk_server -fsanitize=address
+    ${Boost_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
     bulk
 )
